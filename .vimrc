@@ -1,6 +1,8 @@
 set number
 set relativenumber
 set numberwidth=1
+set hlsearch
+set incsearch
 let g:netrw_altv=1
 setlocal foldmethod=marker
 
@@ -12,6 +14,9 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
 nnoremap <leader>' view<esc>a'<esc>bi'<esc>lel
 nnoremap <leader>v :<c-u>execute "rightbelow vsplit " . bufname("#")
+nnoremap <leader>w :<c-u>match Error /\s\+$/<cr>
+nnoremap <leader>W :<c-u>match none
+nnoremap <leader>nh :<c-u>nohlsearch
 " }}}
 
 " Insert Mode Definitions {{{
