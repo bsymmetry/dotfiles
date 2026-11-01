@@ -17,6 +17,9 @@ nnoremap <leader>v :<c-u>execute "rightbelow vsplit " . bufname("#")
 nnoremap <leader>w :<c-u>match Error /\s\+$/<cr>
 nnoremap <leader>W :<c-u>match none
 nnoremap <leader>nh :<c-u>nohlsearch
+nnoremap <leader>cn :<c-u>cnext
+nnoremap <leader>cp :<c-u>cprevious
+"nnoremap <leader>g :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>:copen<cr>
 " }}}
 
 " Insert Mode Definitions {{{
@@ -30,6 +33,10 @@ inoremap <right> <nop>
 inoremap <up> <nop>
 inoremap <down> <nop>
 " }}}
+
+" Visual Mode Definitions {{{
+vnoremap <leader>g :<c-u>call GrepOperator(visualmode())<cr>
+"}}}
 
 iabbrev ssig -- <cr>Tom Merrill<cr>merrill.tom@gmail.com
 
