@@ -35,5 +35,17 @@ coin() {
 }
 
 np() {
-	 openssl rand -hex 64 | openssl passwd -stdin -5 | sed 's/\$5\$//; s/\$//' | tail -c "$1"
+	if openssl no-rand >/dev/null; then
+		echo "OpenSSL rand command not available"
+		return 1
+	elif openssl no-passwd >/dev/null; then
+		echo "OpenSSL passwd command not available"
+		return 1
+	fi
+	
+	openssl rand -hex 64 | openssl passwd -stdin -5 | sed 's/\$5\$//; s/\$//' | tail -c "$1"
+}
+
+dict() {
+	curl dict://dict.org/d:"$1"
 }
